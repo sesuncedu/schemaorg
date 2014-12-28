@@ -56,6 +56,16 @@ class Unit ():
         """
         if (id in NodeIDMap):
             return NodeIDMap[id]
+
+        nartMatch = re.match("^([^)]+)\((.*)\)$",id)
+        if(nartMatch):
+            print("it's a NART")
+            functor=nartMatch.group(1)
+            args=nartMatch.group(2)
+            argNode= Unit.GetUnit(args,createp)
+            print("%(functor)s - argnode is %(argNode)s" % locals() )
+
+
         if (createp != False):
             return Unit(id)
 

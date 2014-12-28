@@ -13,7 +13,7 @@ andstr = "\n AND\n  "
 TYPECOUNT_UPPERBOUND = 1000
 TYPECOUNT_LOWERBOUND = 500
 
-logging.basicConfig(level=logging.INFO)
+logging.basicConfig(level=logging.DEBUG)
 log = logging.getLogger(__name__)
 
 # Tests to probe the health of both schemas and code.
@@ -28,6 +28,12 @@ class BallparkCountTests(unittest.TestCase):
 
 
 class SDOBasicsTestCase(unittest.TestCase):
+
+  def test_fictionalPersonTest(self):
+    ficPers=Unit.GetUnit("Fictional(Person)")
+    log.info("ficPers=%s" % ficPers)
+
+
 
   def test_foundSchema(self):
     self.assertEqual(True, os.path.exists(schema_path), "Expected schema file: "+ schema_path )
